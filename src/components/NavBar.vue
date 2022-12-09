@@ -1,26 +1,23 @@
 <template>
+  <v-card class="overflow-hidden">
     <v-app-bar
-      absolute
-      color="white"
+      fixed
+      color="black"
       elevate-on-scroll
       scroll-target="#scrolling-techniques-7"
+      class="white--text"
     >
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      <v-container class=" d-flex justify-space-between align-center">
+        <v-btn icon x-large color="white">
+          <v-icon>mdi-account-circle</v-icon>
+        </v-btn>
 
-      <v-toolbar-title>Title</v-toolbar-title>
+        <v-toolbar-title>TN2night</v-toolbar-title>
 
-      <v-spacer></v-spacer>
-
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn>
+        <v-btn icon color="white">
+          <v-icon>mdi-forum</v-icon>
+        </v-btn>
+      </v-container>
     </v-app-bar>
+  </v-card>
 </template>
