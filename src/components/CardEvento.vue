@@ -16,7 +16,7 @@
               </v-btn>
               {{info.nome}}
             </v-list-item>
-            <v-btn icon x-large>
+            <v-btn icon x-large @click="toggleSalvato()">
               <v-icon v-if="info.salvato">mdi-bookmark-outline</v-icon>
               <v-icon v-else color="yellow">mdi-bookmark</v-icon>
             </v-btn>
@@ -38,8 +38,16 @@
     export default {
       name: 'CardEvento',
       props: ['info'],
-      
-      mounted: () => {
-      }
+
+      data() {
+         return {
+            e: this.info
+         }
+      },
+      methods: {
+        toggleSalvato() {
+          this.e.salvato = !this.e.salvato
+        }
+      },
     };
 </script>

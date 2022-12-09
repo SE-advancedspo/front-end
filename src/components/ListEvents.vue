@@ -1,6 +1,6 @@
 <template>
     <div v-if="events" class="mt-16">
-        <v-container v-for="event in events" v-bind:key="event.id">
+        <v-container v-for="event in events" v-bind:key="event.id" info.sync="event">
             <CardEvento :info="event"/>
         </v-container>
     </div> 
@@ -32,7 +32,6 @@
 
         mounted() {
             this.getEventsAux()
-            console.log(this.events)
         },
     }
 </script>
