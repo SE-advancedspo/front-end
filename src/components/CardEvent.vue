@@ -11,7 +11,7 @@
         <v-list-item-content>
           <div class="d-flex justify-space-between">
             <v-list-item class="text-h5 mb-1 ma-n2 pa-0">
-              <v-btn icon color="#EF5350">
+              <v-btn icon color="#EF5350" @click="openGMaps()">
                 <v-icon>mdi-map-marker</v-icon>
               </v-btn>
               {{info.nome}}
@@ -26,7 +26,7 @@
           </v-list-item-subtitle>
           <v-list-item class="d-flex-column ma-0 pa-0">
             <div v-for="amico in info.numAmici" :key="amico">
-              <v-icon icon>mdi-account-circle</v-icon>
+              <v-icon icon>mdi-account-multiple</v-icon>
             </div>
           </v-list-item>
         </v-list-item-content>       
@@ -36,7 +36,7 @@
 
   <script>
     export default {
-      name: 'CardEvento',
+      name: 'CardEvent',
       props: ['info'],
 
       data() {
@@ -47,6 +47,9 @@
       methods: {
         toggleSalvato() {
           this.e.salvato = !this.e.salvato
+        },
+        openGMaps() {
+          window.open('https://www.google.com/maps/search/?api=1&query=' + this.e.luogo, '_blank')
         }
       },
     };

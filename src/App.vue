@@ -3,6 +3,7 @@
     <NavBar/>
     <v-main class="grey lighten-3">
       <ListEvents/>
+      <ListSpots/>
     </v-main>
   </v-app>
 </template>
@@ -10,16 +11,14 @@
 <script>
   import NavBar from './components/NavBar.vue'
   import ListEvents from './components/ListEvents.vue'
+  import ListSpots from './components/ListSpots.vue'
   //import axios from 'axios'
 
   export default {
     components: {
       NavBar,
       ListEvents,
-    },
-    data() {
-      return {
-      }
+      ListSpots,
     },
     methods: {
       // fetchUsers() {
