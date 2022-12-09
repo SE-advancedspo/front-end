@@ -1,46 +1,45 @@
 <template>
     <v-card
-      class="mx-auto"
-      max-width="344"
+      class="mx-auto rounded-lg pa-4"
+      min-width="350"
+      max-width="450"
+      min-height="175"
       outlined
+      elevation="1"
     >
-      <v-list-item three-line>
+      <v-list-item three-line class="d-flex justify-center align-center">
         <v-list-item-content>
-          <div class="text-overline mb-4">
-            {{user.password}}
+          <div class="d-flex justify-space-between">
+            <v-list-item class="text-h5 mb-1 ma-n2 pa-0">
+              <v-btn icon color="#EF5350">
+                <v-icon>mdi-map-marker</v-icon>
+              </v-btn>
+              {{info.nome}}
+            </v-list-item>
+            <v-btn icon x-large>
+              <v-icon v-if="info.salvato">mdi-bookmark-outline</v-icon>
+              <v-icon v-else color="yellow">mdi-bookmark</v-icon>
+            </v-btn>
           </div>
-          <v-list-item-title class="text-h5 mb-1">
-            {{user.username}}
-          </v-list-item-title>
-          <v-list-item-subtitle>{{user.password}}</v-list-item-subtitle>
-        </v-list-item-content>
-  
-        <v-list-item-avatar
-          tile
-          size="80"
-          color="grey"
-        ></v-list-item-avatar>
+          <v-list-item-subtitle>
+            {{info.data}}
+          </v-list-item-subtitle>
+          <v-list-item class="d-flex-column ma-0 pa-0">
+            <div v-for="amico in info.numAmici" :key="amico">
+              <v-icon icon>mdi-account-circle</v-icon>
+            </div>
+          </v-list-item>
+        </v-list-item-content>       
       </v-list-item>
-  
-      <v-card-actions>
-        <v-btn
-          outlined
-          rounded
-          text
-        >
-          Button
-        </v-btn>
-      </v-card-actions>
     </v-card>
   </template>
 
   <script>
     export default {
       name: 'CardEvento',
-      props: ['user'],
+      props: ['info'],
       
       mounted: () => {
-        console.log("user: " + this.user)
       }
     };
 </script>
