@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 import HomeView from '../views/HomeView.vue'
 import SpotsView from '../views/SpotsView.vue'
+import CreateSpotView from '../views/CreateSpotView.vue'
 
 Vue.use(VueRouter)
 
@@ -16,6 +17,11 @@ const routes = [
     path: '/spots',
     name: 'spots',
     component: SpotsView,
+  },
+  {
+    path: '/createspot',
+    name: 'createspot',
+    component: CreateSpotView,
   }
 ]
 

@@ -7,20 +7,12 @@
       scroll-target="#scrolling-techniques-7"
       class="white--text rounded-t-0"
     >
-      <v-container class=" d-flex justify-space-between align-center">
-        <v-btn icon x-large color="white">
-          <v-icon>mdi-account-circle</v-icon>
-        </v-btn>
-
-        <router-link to="/">
+      <v-container class="d-flex justify-center align-center">
+        <router-link to="/createspot">
           <v-btn color="black" class="white--text">
-            <v-toolbar-title>Events</v-toolbar-title>
+            <v-toolbar-title>Create Spot</v-toolbar-title>
           </v-btn>
         </router-link>
-        
-        <v-btn icon x-large color="white" to="/spots">
-           <v-icon>mdi-forum</v-icon>
-        </v-btn>
       </v-container>
     </v-app-bar>
   </v-card>
@@ -28,7 +20,7 @@
 
 <script>
   export default {
-    name: "NavBarEvents",
+    name: "NavBarCreateSpot",
     components: {
     }
   };
