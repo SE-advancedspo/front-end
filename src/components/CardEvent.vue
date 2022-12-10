@@ -1,13 +1,13 @@
 <template>
     <v-card
-      class="mx-auto rounded-lg pa-4"
+      class="mx-auto rounded-xl pa-4"
       min-width="350"
       max-width="450"
       min-height="175"
       outlined
-      elevation="1"
+      elevation="4"
     >
-      <v-list-item three-line class="d-flex justify-center align-center">
+      <v-list-item three-line class="text-left">
         <v-list-item-content>
           <div class="d-flex justify-space-between">
             <v-list-item class="text-h5 mb-1 ma-n2 pa-0">
@@ -24,7 +24,7 @@
           <v-list-item-subtitle>
             {{info.data}}
           </v-list-item-subtitle>
-          <v-list-item class="d-flex-column ma-0 pa-0">
+          <v-list-item class="d-flex-column pa-0">
             <div v-for="amico in info.numAmici" :key="amico">
               <v-icon icon>mdi-account-multiple</v-icon>
             </div>

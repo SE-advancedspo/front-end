@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire">
-    <NavBar/>
+    <NavBarSpots/>
     <v-main class="grey lighten-3">
       <ListSpots/>
     </v-main>
@@ -8,12 +8,12 @@
 </template>
 
 <script>
-  import NavBar from '../components/NavBar.vue'
+  import NavBarSpots from '../components/NavBarSpots.vue'
   import ListSpots from '../components/ListSpots.vue'
 
   export default {
     components: {
-      NavBar,
+      NavBarSpots,
       ListSpots,
     },
   }

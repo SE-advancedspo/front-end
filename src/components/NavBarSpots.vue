@@ -9,17 +9,17 @@
     >
       <v-container class=" d-flex justify-space-between align-center">
         <v-btn icon x-large color="white">
-          <v-icon>mdi-account-circle</v-icon>
+          <v-icon>mdi-magnify</v-icon>
         </v-btn>
 
-        <router-link to="/">
+        <router-link to="/spots">
           <v-btn color="black" class="white--text">
-            <v-toolbar-title>TN2night</v-toolbar-title>
+            <v-toolbar-title>Spots</v-toolbar-title>
           </v-btn>
         </router-link>
         
-        <v-btn icon color="white" to="/spots">
-           <v-icon>mdi-forum</v-icon>
+        <v-btn icon x-large color="white" to="/">
+           <v-icon>mdi-glass-wine</v-icon>
         </v-btn>
       </v-container>
     </v-app-bar>
