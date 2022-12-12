@@ -27,7 +27,7 @@
                             Forgot Password?
                         </a>
                         <v-container fluid class="d-flex justify-center" style="width:50%;">
-                            <v-btn class="black yellow--text ma-4 font-weight-bold" elevation="5" style="font-size: 1rem" rounded>
+                            <v-btn to="/" class="black yellow--text ma-4 font-weight-bold" elevation="5" style="font-size: 1rem" rounded>
                                 Login
                             </v-btn>
                             <v-btn class="black yellow--text ma-4 font-weight-bold" elevation="5" style="font-size: 1rem" rounded>
@@ -39,8 +39,10 @@
                 </v-card>
                 <div class="my-14" style="font-size:1.1rem">
                     <p style="font-size:0.8rem" class="text--secondary">OR</p>
-                    <v-btn elevation="0" color="grey lighten-3" @click="alert = true" class="text-decoration-underline black--text">Use Google</v-btn>
-                    <v-icon icon class="ml-n2">mdi-google-plus</v-icon>
+                    <v-btn icon @click="alert = true">
+                        <span class="text-decoration-underline black--text">Use Google</span> 
+                        <v-icon class="mx-2">mdi-google-plus</v-icon>
+                    </v-btn>
                 </div>
             </v-container>
             <div>
