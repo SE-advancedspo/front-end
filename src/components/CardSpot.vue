@@ -3,7 +3,6 @@
       class="mx-auto rounded-xl pa-4"
       min-width="350"
       max-width="450"
-      min-height="25"
       outlined
       elevation="1"
     >

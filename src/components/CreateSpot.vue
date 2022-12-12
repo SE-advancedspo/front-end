@@ -1,6 +1,6 @@
 <template>
     <v-div class="d-flex justify-center align-center px-16">
-        <v-container class="mt-16">
+        <v-container class="mt-16" style="max-width: 500px">
             <p class="text-h6 mb-4">Type</p>
             <v-menu>
                 <template v-slot:activator="{ on, attrs }">
@@ -9,7 +9,7 @@
                     v-on="on"
                     class="mb-8"
                     >
-                    Choose Spot Type <v-icon icon>mdi-triangle-small-down</v-icon>
+                    General <v-icon icon>mdi-triangle-small-down</v-icon>
                     </v-btn>
                 </template>
 
@@ -31,11 +31,12 @@
                 full-width
                 single-line
                 ></v-textarea>
-            <v-container class="d-flex flex-column">
-                <v-btn class="black yellow--text my-8 mx-16" rounded>
+            <v-container fluid class="d-flex flex-column"
+                style="width: 25%">
+                <v-btn class="black yellow--text my-4" rounded>
                     Send
                 </v-btn>
-                <v-btn class="black yellow--text mx-16" rounded>
+                <v-btn to="/spots" class="black yellow--text my-4" rounded>
                     Cancel
                 </v-btn>
             </v-container>

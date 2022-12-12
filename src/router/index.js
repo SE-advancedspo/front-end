@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import HomeView from '../views/HomeView.vue'
+import LoginView from '../views/LoginView.vue'
 import SpotsView from '../views/SpotsView.vue'
 import CreateSpotView from '../views/CreateSpotView.vue'
 
@@ -22,7 +23,12 @@ const routes = [
     path: '/createspot',
     name: 'createspot',
     component: CreateSpotView,
-  }
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: LoginView,
+  },
 ]
 
 const router = new VueRouter({

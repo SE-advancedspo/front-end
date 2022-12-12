@@ -36,6 +36,9 @@
                     {id: this.count++, testo: 'Do mollit non minim est Lorem sint do pariatur pariatur enim. Nulla ex minim enim eu incididunt. Commodo cupidatat voluptate est qui et magna aute eiusmod.', autore:'vincenzo.netti@studenti.unint.it', upVoted: false},
                     {id: this.count++, testo: 'Nulla ex minim enim eu incididunt. Commodo cupidatat voluptate est qui et magna aute eiusmod. Ullamco officia sint exercitation occaecat ad magna nisi velit do consectetur esse adipisicing magna amet voluptate. Eiusmod dolor irure labore commodo magna.', autore:'vincenzo.netti@studenti.unint.it', upVoted: true},
                     {id: this.count++, testo: 'Nulla ex minim enim eu incididunt. Commodo cupidatat voluptate est qui et magna aute eiusmod. Do mollit non minim est Lorem sint do pariatur pariatur enim.', autore:'vincenzo.netti@studenti.unint.it', upVoted: true},
+                    {id: this.count++, testo: 'Do mollit non minim est Lorem sint do pariatur pariatur enim. Nulla ex minim enim eu incididunt. Commodo cupidatat voluptate est qui et magna aute eiusmod.', autore:'vincenzo.netti@studenti.unint.it', upVoted: false},
+                    {id: this.count++, testo: 'Nulla ex minim enim eu incididunt. Commodo cupidatat voluptate est qui et magna aute eiusmod. Ullamco officia sint exercitation occaecat ad magna nisi velit do consectetur esse adipisicing magna amet voluptate. Eiusmod dolor irure labore commodo magna.', autore:'vincenzo.netti@studenti.unint.it', upVoted: true},
+                    {id: this.count++, testo: 'Nulla ex minim enim eu incididunt. Commodo cupidatat voluptate est qui et magna aute eiusmod. Do mollit non minim est Lorem sint do pariatur pariatur enim.', autore:'vincenzo.netti@studenti.unint.it', upVoted: true},
                 ]
             },
         },
