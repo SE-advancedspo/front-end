@@ -12,17 +12,15 @@
                 >
                 <v-list-item class="d-flex justify-space-between mt-16">
                     <v-list-item-content class="d-flex justify-center align-center">
-                        <p class="mb-4 text-h6 font-weight-medium">
+                        <p class="mb-4 text-h5 font-weight-medium">
                             Login or Register
                         </p>
                         <v-text-field
                             label="Username"
-                            :rules="rules"
                             hide-details="auto"
                             ></v-text-field>
                         <v-text-field
                             label="Password"
-                            :rules="rules"
                             hide-details="auto"
                             ></v-text-field>
                         <a class="text-decoration-underline black--text my-4 text-left" style="font-size: 0.8rem">
@@ -41,29 +39,31 @@
                 </v-card>
                 <div class="my-14" style="font-size:1.1rem">
                     <p style="font-size:0.8rem" class="text--secondary">OR</p>
-                    <a class="text-decoration-underline black--text">Use Google</a>
-                    <v-icon icon class="mx-1">mdi-google-plus</v-icon>
+                    <v-btn elevation="0" color="grey lighten-3" @click="alert = true" class="text-decoration-underline black--text">Use Google</v-btn>
+                    <v-icon icon class="ml-n2">mdi-google-plus</v-icon>
                 </div>
             </v-container>
+            <div>
+                <v-alert
+                    dense
+                    outlined
+                    type="error"
+                    v-model="alert"
+                    dismissible
+                    border="left"
+                    >
+                   Unfortunately, this feature hasn't been implemented yet. Please try later.
+                </v-alert>
+            </div>
         </div> 
 </template>
 
 <script>
     export default {
-        components: {
-        },
-
         data() {
             return {
-            
+                alert: false,
             }
-        },
-
-        methods: {
-
-        },
-
-        mounted() {
         },
     }
 </script>
