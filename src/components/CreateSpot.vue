@@ -53,7 +53,7 @@ import {createSpot} from '../api/spots/createSpot'
             username: localStorage.getItem('username'),
             testo: '',
             items: [
-                { title: 'General'  },
+                { title: 'General'},
                 { title: 'Specific'},
             ],
         }),
@@ -66,6 +66,7 @@ import {createSpot} from '../api/spots/createSpot'
                 }
                 createSpot(spot)
                 .then(() => {
+                    this.$root.toast.show({message: 'Spot created successfully!'})
                     this.testo = ''
                     router.push('/spots')
                 })
