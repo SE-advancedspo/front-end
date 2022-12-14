@@ -6,6 +6,7 @@
       elevate-on-scroll
       scroll-target="#scrolling-techniques-7"
       class="white--text rounded-t-0"
+      style="z-index: 9999;"
     >
       <v-container class=" d-flex justify-center align-center">
         <router-link to="/login">

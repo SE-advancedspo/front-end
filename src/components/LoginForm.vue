@@ -18,16 +18,22 @@
                         <v-text-field
                             label="Username"
                             hide-details="auto"
+                            v-model="username"
                             ></v-text-field>
                         <v-text-field
                             label="Password"
                             hide-details="auto"
                             ></v-text-field>
-                        <a class="text-decoration-underline black--text my-4 text-left" style="font-size: 0.8rem">
+                        <a @click="alert=true" class="text-decoration-underline black--text my-4 text-left" style="font-size: 0.8rem">
                             Forgot Password?
                         </a>
                         <v-container fluid class="d-flex justify-center" style="width:50%;">
-                            <v-btn to="/" class="black yellow--text ma-4 font-weight-bold" elevation="5" style="font-size: 1rem" rounded>
+                            <v-btn
+                                @click="getUsername()"
+                                class="black yellow--text ma-4 font-weight-bold"
+                                style="font-size: 1rem"
+                                elevation="5"
+                                rounded>
                                 Login
                             </v-btn>
                             <v-btn class="black yellow--text ma-4 font-weight-bold" elevation="5" style="font-size: 1rem" rounded>
@@ -46,15 +52,15 @@
                 </div>
             </v-container>
             <div>
-                <v-alert
-                    dense
-                    outlined
-                    type="error"
-                    v-model="alert"
-                    dismissible
-                    border="left"
-                    >
-                   Unfortunately, this feature hasn't been implemented yet. Please try later.
+            <v-alert
+                dense
+                outlined
+                type="error"
+                v-model="alert"
+                dismissible
+                border="left"
+                >
+                Unfortunately, this feature hasn't been implemented yet. Please try later.
                 </v-alert>
             </div>
         </div> 
@@ -64,8 +70,14 @@
     export default {
         data() {
             return {
-                alert: false,
+                username: '',
+                alert: false, 
             }
+        },
+        methods: {
+            getUsername() {
+                localStorage.setItem('username', this.username)
+            },
         },
     }
 </script>

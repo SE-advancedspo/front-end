@@ -17,7 +17,7 @@
 
 <script>
     import CardEvent from './CardEvent.vue'
-    import axios from 'axios'
+    import {getAllEvents} from '../api/events/getAllEvents'
 
     export default {
         components: {
@@ -43,9 +43,9 @@
                 ]
             },
             fetchEvents() {
-                axios.get('http://localhost:3000/evento').then(response => {
-                    console.log(response.data)
-                    this.events = response.data
+                getAllEvents()
+                .then(({data}) => {  // descrutoring data
+                    this.events = data
                 })
                 .catch(error => {
                     console.log(error)
@@ -54,8 +54,8 @@
         },
 
         mounted() {
-            //this.fetchEvents()
-            this.getEventsAux()
+            this.fetchEvents()
+            //this.getEventsAux()
         },
     }
 </script>

@@ -20,7 +20,7 @@
               {{info.testo}}
             </p>
             <div class="d-flex justify-space-between align-center mt-2">
-              <v-btn x-small @click="translate()" class="teal--text text-accent3" elevation="0" color="white">
+              <v-btn x-small @click="translateText()" class="teal--text text-accent3" elevation="0" color="white">
                 <span class="text-decoration-underline ml-n2">Translate</span>
                 <v-icon icon x-small class="px-2">mdi-translate-variant</v-icon>
               </v-btn>
@@ -34,18 +34,32 @@
   </template>
 
   <script>
+    import {translate} from '../api/translate/translate'
+    
     export default {
       name: 'CardSpot',
       props: ['info'],
       data() {
           return {
-              s: this.info
+              s: this.info,
           }
       },
       methods: {
-        translate() {
-          console.log('translated')
-          this.s.testo = this.s.testo.split('').reverse().join('')
+        translateText() {
+          let langTarget = "it"
+          if(this.info.lingua=="Italiano")
+            langTarget = "en"
+          const spotData = {
+            q: this.info.testo,
+            target: langTarget,
+          }
+          translate(spotData)
+          .then((response) => {
+            console.log(response.data)
+          })
+          .catch((error) => {
+            console.log(error)
+          })
         },
         sendMessageToAuthor() {
           console.log('message sent to: ' + this.info.autore)

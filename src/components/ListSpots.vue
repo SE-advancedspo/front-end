@@ -1,6 +1,6 @@
 <template>
     <div v-if="spots" class="mt-16 px-4">
-        <v-container v-for="spot in spots" v-bind:key="spot.id" info.sync="spot">
+        <v-container v-for="spot in spots" v-bind:key="spot._id" info.sync="spot">
             <CardSpot :info="spot"/>
         </v-container>
         <v-btn icon
@@ -17,6 +17,7 @@
 
 <script>
     import CardSpot from './CardSpot.vue'
+    import {getAllSpots} from '../api/spots/getAllSpots'
 
     export default {
         components: {
@@ -41,10 +42,20 @@
                     {id: this.count++, testo: 'Nulla ex minim enim eu incididunt. Commodo cupidatat voluptate est qui et magna aute eiusmod. Do mollit non minim est Lorem sint do pariatur pariatur enim.', autore:'vincenzo.netti@studenti.unint.it', upVoted: true},
                 ]
             },
+            fetchSpots() {
+                getAllSpots()
+                .then(({data}) => {  // descrutoring data
+                    this.spots = data
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+            },
         },
 
         mounted() {
-            this.getSpotsAux()
+            //this.getSpotsAux()
+            this.fetchSpots()
         },
     }
 </script>
