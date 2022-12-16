@@ -4,9 +4,10 @@ const username = localStorage.getItem('username');
 
 export const addFriend = (friend_username) => {
     const data = {
-        username: username,
         friend_username: friend_username,
     }
-
-    return init.post('/friend/', data)
+    const config = {
+        username: username,
+    }
+    return init.post('/friend/'+username, data, {params: config})
 }

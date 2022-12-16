@@ -17,10 +17,10 @@
             <p class="text-h6 mb-0 ml-n10">
               {{s.username}}
             </p>
-            <v-btn v-if="s.friend" icon x-large @click="addFriend()">
-              <v-icon icon color="red">mdi-bookmark</v-icon>
+            <v-btn v-if="s.friend" icon x-large @click="removeBookmarkFriend()">
+              <v-icon icon color="green">mdi-bookmark</v-icon>
             </v-btn>
-            <v-btn v-else icon x-larg @click="removeFriend()">
+            <v-btn v-else icon x-large @click="addBookmarkFriend()">
               <v-icon icon color="red">mdi-bookmark</v-icon>
             </v-btn>
           </div>       
@@ -41,19 +41,23 @@
           }
       },
       methods: {
-          addFriend() {
-              
-              addFriend()
-              .then(res => {
-                  console.log(res)
-                  this.s.friend = true;
-              })
-              .catch(error => {
-                  console.log(error)
-              })
+          addBookmarkFriend() {
+            addFriend(this.s.username)
+            .then(res => {
+              console.log(res)
+            })
+            .catch(error => {
+              console.log(error)
+            })
           },
-          removeFriend() {
-              this.s.friend = false;
+          removeBookmarkFriend() {
+            removeFriend(this.s.username)
+            .then(res => {
+              console.log(res)
+            })
+            .catch(error => {
+              console.log(error)
+            })
           },
       }
     };
