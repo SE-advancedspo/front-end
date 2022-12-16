@@ -23,6 +23,8 @@
                         <v-text-field
                             label="Password"
                             hide-details="auto"
+                            type="password"
+                            v-model="password"
                             ></v-text-field>
                         <a @click="alert=true" class="text-decoration-underline black--text my-4 text-left" style="font-size: 0.8rem">
                             Forgot Password?
@@ -57,13 +59,42 @@
 </template>
 
 <script>
+    import {login} from '../api/login/login'
     export default {
         data() {
             return {
                 username: '',
+                password: '',
             }
         },
         methods: {
+            login() {
+                if (this.username == '') {
+                    this.$root.toast.show({message: "Please enter a username"})
+                } else if (this.password == '') {
+                    this.$root.toast.show({message: "Please enter a password"})
+                } else {
+                    const user = {
+                        username: this.username,
+                        password: this.password,
+                    }
+                    login(user)
+                    .then(response => {
+                        console.log(response)
+                        // need to save the token in local storage
+                        if (response.status == 200) {
+                            this.$root.toast.show({message: "Successfully logged in as " + this.username})
+                            this.$router.push('/')
+                        } else {
+                            this.$root.toast.show({message: "Incorrect username or password"})
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error)
+                        this.$root.toast.show({message: "Incorrect username or password"})
+                    })
+                }
+            },
             getUsername() {
                 localStorage.setItem('username', this.username)
                 this.$root.toast.show({message: "Successfully logged in as " + this.username})
