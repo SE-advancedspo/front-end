@@ -1,7 +1,7 @@
 <template>
     <div class="mt-16 py-16 px-4">
         <v-container class="d-flex flex-column justify-center align-center text-center">
-            <v-img src="../assets/logo.png" alt="logo tn2night" class="mb-n16" style="z-index:999" max-width="175" max-height="175"></v-img>
+            <v-img src="../assets/logo.png" alt="logo tn2night" class="mb-n16" style="z-index:900" max-width="175" max-height="175"></v-img>
             <v-card
                 class="mx-auto rounded-xl pa-4"
                 min-width="350"
@@ -36,7 +36,7 @@
                                 rounded>
                                 Login
                             </v-btn>
-                            <v-btn class="black yellow--text ma-4 font-weight-bold" elevation="5" style="font-size: 1rem" rounded>
+                            <v-btn class="black yellow--text ma-4 font-weight-bold" elevation="5" style="font-size: 1rem" rounded to="/registration">
                                 Register
                             </v-btn>
                         </v-container>
@@ -45,25 +45,15 @@
                 </v-card>
                 <div class="my-14" style="font-size:1.1rem">
                     <p style="font-size:0.8rem" class="text--secondary">OR</p>
-                    <v-btn icon @click="alert = true">
+                    <v-btn icon @click="unimplemented()">
                         <span class="text-decoration-underline black--text">Use Google</span> 
                         <v-icon class="mx-2">mdi-google-plus</v-icon>
                     </v-btn>
                 </div>
             </v-container>
             <div>
-            <v-alert
-                dense
-                outlined
-                type="error"
-                v-model="alert"
-                dismissible
-                border="left"
-                >
-                Unfortunately, this feature hasn't been implemented yet. Please try later.
-                </v-alert>
-            </div>
         </div> 
+    </div>
 </template>
 
 <script>
@@ -71,13 +61,17 @@
         data() {
             return {
                 username: '',
-                alert: false, 
             }
         },
         methods: {
             getUsername() {
                 localStorage.setItem('username', this.username)
+                this.$root.toast.show({message: "Successfully logged in as " + this.username})
+                this.$router.push('/')
             },
+            unimplemented() {
+                this.$root.toast.show({message: "Unfortunately, this feature hasn't been implemented yet!"})
+            }
         },
     }
 </script>

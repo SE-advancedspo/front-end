@@ -6,14 +6,14 @@
       elevate-on-scroll
       scroll-target="#scrolling-techniques-7"
       class="white--text rounded-t-0"
-      style="z-index: 9999;"
+      style="z-index: 999;"
     >
     <v-container class=" d-flex justify-space-between align-center">
         <v-btn icon x-large color="white" @click="logout()">
           <v-icon>mdi-logout</v-icon>
         </v-btn>
 
-        <v-btn icon class="white--text">
+        <v-btn text class="white--text">
           <v-toolbar-title>Profile</v-toolbar-title>
         </v-btn>
 
@@ -32,7 +32,8 @@
       logout() {
         // change token in localStorage
         localStorage.setItem('username', "")
-        console.log('logged out')
+        this.$root.toast.show({color: "red", message: "Successfully logged out"})
+        this.$router.push('/')
       }
     }
   };

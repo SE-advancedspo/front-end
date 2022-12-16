@@ -6,17 +6,16 @@
       elevate-on-scroll
       scroll-target="#scrolling-techniques-7"
       class="white--text rounded-t-0"
+      style="z-index: 999;"
     >
       <v-container class=" d-flex justify-space-between align-center">
-        <v-btn icon x-large color="white">
+        <v-btn icon x-large color="white" @click="goToFriends()">
           <v-icon>mdi-magnify</v-icon>
         </v-btn>
 
-        <router-link to="/spots">
-          <v-btn color="black" class="white--text">
-            <v-toolbar-title>Spots</v-toolbar-title>
-          </v-btn>
-        </router-link>
+        <v-btn text color="black" class="white--text">
+          <v-toolbar-title>Spots</v-toolbar-title>
+        </v-btn>
         
         <v-btn icon x-large color="white" to="/">
            <v-icon>mdi-glass-wine</v-icon>
@@ -29,7 +28,17 @@
 <script>
   export default {
     name: "NavBarSpots",
-    components: {
-    }
+    methods: {
+      goToFriends() {
+        if(this.username == '')
+        {
+          this.$root.toast.show({message: "Please, authenticate yourself before moving on."})
+          this.$router.push("/login");
+        } else
+        {
+          this.$router.push("/friends");
+        }
+      }
+    },
   };
 </script>

@@ -45,7 +45,7 @@
             fetchSpots() {
                 getAllSpots()
                 .then(({data}) => {  // descrutoring data
-                    this.spots = data
+                    this.spots = data.reverse()
                 })
                 .catch(error => {
                     console.log(error)

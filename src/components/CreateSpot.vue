@@ -31,15 +31,16 @@
                 full-width
                 single-line
                 ></v-textarea>
-            <v-container fluid class="d-flex flex-column"
-                style="width: 25%">
-                <v-btn class="black yellow--text my-4" @click="sendSpot()" rounded>
+            <div class="d-flex justify-content-center"
+                    style="position: fixed; bottom: 2.5%; width: 100%;"
+                >
+                <v-btn class="black yellow--text mx-4" @click="sendSpot()" rounded>
                     Send
                 </v-btn>
-                <v-btn to="/spots" class="black yellow--text my-4" rounded>
+                <v-btn to="/spots" class="black yellow--text mx-4" rounded>
                     Cancel
                 </v-btn>
-            </v-container>
+            </div>
         </v-container> 
     </div>
 </template>

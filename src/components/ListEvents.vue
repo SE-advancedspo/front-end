@@ -45,6 +45,7 @@
             fetchEvents() {
                 getAllEvents()
                 .then(({data}) => {  // descrutoring data
+                    console.log(data)
                     this.events = data
                 })
                 .catch(error => {
