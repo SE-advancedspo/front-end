@@ -1,8 +1,7 @@
 import init from '../init.js';
 
-const username = localStorage.getItem('username');
-
 export const removeFriend = (friend_username) => {
+    const username = localStorage.getItem('username');
     const data = {
         friend_username: friend_username,
     }

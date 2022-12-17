@@ -26,6 +26,9 @@
 </template>
 
 <script>
+  // import { authenticateUser } from '@/api/authenticateUser';
+  import { isUserLogged } from '@/api/checkUser'
+
   export default {
     name: "NavBarEvents",
     data()  {
@@ -35,7 +38,7 @@
     },
     methods: {
       goToProfile() {
-        if(this.username == '')
+        if(!isUserLogged())
         {
           this.$root.toast.show({message: "Please, authenticate yourself before moving on."})
           this.$router.push("/login");

@@ -14,20 +14,20 @@
               <v-btn icon color="#EF5350" @click="openGMaps()">
                 <v-icon>mdi-map-marker</v-icon>
               </v-btn>
-              {{info.nome}}
+              {{e.nome}}
             </v-list-item>
-            <v-btn v-if="e.salvato" icon x-large @click="unfollowBookmarkEvento()">
-              <v-icon>mdi-bookmark-outline</v-icon>
+            <v-btn v-if="this.e.salvato" icon x-large @click="unfollowBookmarkEvento()">
+              <v-icon color="yellow">mdi-bookmark</v-icon>
             </v-btn>
             <v-btn v-else icon x-large @click="followBookmarkEvento()">
-              <v-icon color="yellow">mdi-bookmark</v-icon>
+              <v-icon>mdi-bookmark-outline</v-icon>
             </v-btn>
           </div>
           <v-list-item-subtitle>
-            {{info.data}}
+            {{e.data}}
           </v-list-item-subtitle>
-          <v-list-item class="d-flex-column pa-0">
-            <div v-for="amico in info.numAmici" :key="amico">
+          <v-list-item class="d-flex-column pa-0 mt-2">
+            <div v-for="amico in e.numAmici" :key="amico">
               <v-icon icon>mdi-account-multiple</v-icon>
             </div>
           </v-list-item>
@@ -38,7 +38,9 @@
 
   <script>
     import {followEvent} from '../api/events/followEvent';
-    // import {unfollowEvent} from '../api/events/unfollowEvent';
+    import {unfollowEvent} from '../api/events/unfollowEvent';
+    import {isUserLogged} from '../api/checkUser';
+    // import {authenticateUser} from '../api/authenticateUser';
 
     export default {
       name: 'CardEvent',
@@ -51,6 +53,11 @@
       },
       methods: {
         followBookmarkEvento() {
+          if(!isUserLogged()) {
+            this.$root.toast.show({message: "Please, authenticate yourself before moving on."})
+            this.$router.push("/login");
+            return
+          }
           followEvent(this.e.id_evento)
           .then(() => {
             this.e.salvato = true
@@ -62,17 +69,20 @@
           })
         },
         unfollowBookmarkEvento() {
-          this.e.salvato = false
-          this.$forceUpdate()
-          // unfollowEvent(this.e.id_evento)
-          // .then(() => {
-          //   this.e.salvato = false
-          //   // reload component
-          //   this.$forceUpdate()
-          // })
-          // .catch(error => {
-          //   console.log(error)
-          // })
+          if(!isUserLogged()) {
+            this.$root.toast.show({message: "Please, authenticate yourself before moving on."})
+            this.$router.push("/login");
+            return
+          }
+          unfollowEvent(this.e.id_evento)
+          .then(() => {
+            this.e.salvato = false
+            // reload component
+            this.$forceUpdate()
+          })
+          .catch(error => {
+            console.log(error)
+          })
         },
         openGMaps() {
           window.open('https://www.google.com/maps/search/?api=1&query=' + this.e.luogo, '_blank')

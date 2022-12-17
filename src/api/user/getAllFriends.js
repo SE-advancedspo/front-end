@@ -1,7 +1,6 @@
 import init from '../init.js';
 
-const username = localStorage.getItem('username');
-
 export const getAllFriends = () => {
+    const username = localStorage.getItem('username');
     return init.get('/friend/'+username)
 }

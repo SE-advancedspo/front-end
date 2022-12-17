@@ -154,9 +154,8 @@
                 }
                 registerNewUser(newUser)
                 .then(() => {
-                    this.$root.toast.show({message: "Registration successful!"})
-                    localStorage.setItem('username', this.username)
-                    this.$router.push({name: 'home'})
+                    this.$root.toast.show({message: "Registration successful! Now, please, login."})
+                    this.$router.push({name: 'login'})
                 })
                 .catch((err) => {
                     console.log(err)

@@ -1,8 +1,8 @@
 import init from "../init";
 
-const username = localStorage.getItem('username');
 
 export const unfollowEvent = (id_evento) => {
+    const username = localStorage.getItem('username');
     const data = {
         id: id_evento,
     }

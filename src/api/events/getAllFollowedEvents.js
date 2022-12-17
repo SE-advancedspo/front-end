@@ -1,10 +1,8 @@
 import init from "../init";
 
-const username = localStorage.getItem('username');
-
-export const getAllFollowedEvents = () => {
+export const getAllFollowedEvents = (username) => {
     const config = {
         username: username,
     }
-    return init.get("/evento/segui/"+username, null, config );
+    return init.get("/evento/segui/"+username, null, config);
 }

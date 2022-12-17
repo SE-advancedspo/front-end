@@ -1,14 +1,15 @@
 import init from "../init";
 
 
-export const followEvent = (id_evento) => {
+export const downVote = (id_spot) => {
     const username = localStorage.getItem('username');
+    const url = "/spot/like/"+username;
     const data = {
-        id: id_evento,
+        id: id_spot,
     }
     const config = {
         username: username,
     }
-    const url = "/evento/segui/"+username;
-    return init.post(url, data, {params: config});
+
+    return init.delete(url, {data: data}, {params: config});
 }

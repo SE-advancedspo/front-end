@@ -8,7 +8,7 @@
     >
       <v-list-item class="d-flex justify-space-between">
         <div class="ml-n12 mr-5">
-          <v-btn v-if="info.upVoted" icon class="amber lighten-2" @click="downVote()">
+          <v-btn v-if="s.upVoted" icon class="amber lighten-2" @click="downVote()">
             <v-icon x-large color="deep-orange darken-3">mdi-fire-circle</v-icon>
           </v-btn>
           <v-btn v-else icon outlined @click="upVote()">
@@ -17,7 +17,7 @@
         </div>
         <v-list-item-content class="d-flex justify-center align-center text-justify">
             <p class="mb-4 font-weight-medium">
-              {{info.testo}}
+              {{s.testo}}
             </p>
             <div class="d-flex justify-space-between align-center mt-2">
               <v-btn x-small @click="translateText()" class="teal--text text-accent3" elevation="0" color="white">
@@ -36,7 +36,7 @@
   <script>
     import {translate} from '../api/translate/translate'
     import {upVote} from '../api/spots/upVoteSpot'
-    // import {downVote} from '../api/spots/downVote'
+    import {downVote} from '../api/spots/downVoteSpot'
     
     export default {
       name: 'CardSpot',
@@ -63,7 +63,6 @@
           this.$root.toast.show({message: 'The author of this spot is: ' + this.info.autore + ". Although, it's not possible to contact him/her yet."})
         },
         upVote() {
-          console.log("id: " + this.s.id_spot)
           upVote(this.s.id_spot)
           .then(() => {
             this.s.upVoted = true
@@ -74,8 +73,14 @@
           })
         },
         downVote() {
-          this.s.upVoted = false
-          this.$forceUpdate()
+          downVote(this.s.id_spot)
+          .then(() => {
+            this.s.upVoted = false
+            this.$forceUpdate()
+          })
+          .catch((error) => {
+            console.log(error)
+          })
         },
       },
       mounted() {
