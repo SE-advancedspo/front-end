@@ -40,7 +40,6 @@
     import {followEvent} from '../api/events/followEvent';
     import {unfollowEvent} from '../api/events/unfollowEvent';
     import {isUserLogged} from '../api/checkUser';
-    // import {authenticateUser} from '../api/authenticateUser';
 
     export default {
       name: 'CardEvent',

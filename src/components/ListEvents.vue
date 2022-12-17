@@ -28,7 +28,6 @@
         
         data() {
             return {
-                username: localStorage.getItem('username'),
                 events: [],
                 followedEvents: [],
                 eventsHanded: [],
@@ -55,7 +54,7 @@
                 })
             },
             getAllFollowedEvents() {
-                getAllFollowedEvents(this.username)
+                getAllFollowedEvents()
                 .then(({data}) => {  // descrutoring data
                     this.followedEvents = data.map(({id_evento}) => id_evento)
                     this.events = this.events.map((event) => {

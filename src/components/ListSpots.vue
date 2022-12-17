@@ -1,6 +1,6 @@
 <template>
     <div v-if="spots" class="mt-16 px-4">
-        <v-container v-for="spot in spots" v-bind:key="spot._id" info.sync="spot">
+        <v-container v-for="spot in spotsHanded" v-bind:key="spot._id" info.sync="spot">
             <CardSpot :info="spot"/>
         </v-container>
         <v-btn icon
@@ -17,7 +17,9 @@
 
 <script>
     import CardSpot from './CardSpot.vue'
+    import { isUserLogged } from '@/api/checkUser'
     import {getAllSpots} from '../api/spots/getAllSpots'
+    // import {getAllLikedSpots} from '../api/spots/getAllLikedSpots'
 
     export default {
         components: {
@@ -26,6 +28,8 @@
         data() {
             return {
                 spots: [],
+                likedSpots: [],
+                spotsHanded: [],
             }
         },
         methods: {
@@ -37,6 +41,29 @@
                     // popularity order
                     this.spots = data.sort((a, b) => {
                         return (b.num_like - a.num_like)
+                    })
+                    this.spots = this.spots.map((spot) => {
+                        spot.upVoted = false
+                        return spot
+                    })
+                    if(isUserLogged()) {
+                        this.getAllLikedSpots()
+                    }
+                    this.spotsHanded = this.spots
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+            },
+            getAllLikedSpots() {
+                getAllLikedSpots()
+                .then(({data}) => {  // descrutoring data
+                    this.likedSpots = data.map(({id_spot}) => id_spot)
+                    this.spots = this.spots.map((spot) => {
+                        if(this.likedSpots.includes(spot.id_spot)) {
+                            spot.upVoted = true
+                        }
+                        return spot
                     })
                 })
                 .catch(error => {

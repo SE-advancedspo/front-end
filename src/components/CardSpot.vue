@@ -37,6 +37,7 @@
     import {translate} from '../api/translate/translate'
     import {upVote} from '../api/spots/upVoteSpot'
     import {downVote} from '../api/spots/downVoteSpot'
+    import {isUserLogged} from '../api/checkUser';
     
     export default {
       name: 'CardSpot',
@@ -63,6 +64,11 @@
           this.$root.toast.show({message: 'The author of this spot is: ' + this.info.autore + ". Although, it's not possible to contact him/her yet."})
         },
         upVote() {
+          if(!isUserLogged()) {
+            this.$root.toast.show({message: "Please, authenticate yourself before moving on."})
+            this.$router.push("/login");
+            return
+          }
           upVote(this.s.id_spot)
           .then(() => {
             this.s.upVoted = true
@@ -73,6 +79,11 @@
           })
         },
         downVote() {
+          if(!isUserLogged()) {
+            this.$root.toast.show({message: "Please, authenticate yourself before moving on."})
+            this.$router.push("/login");
+            return
+          }
           downVote(this.s.id_spot)
           .then(() => {
             this.s.upVoted = false
