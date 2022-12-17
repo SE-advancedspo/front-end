@@ -56,6 +56,7 @@
             removeFriend(this.s.username)
             .then(() => {
               this.s.friend = false
+
               // reload component
               this.$forceUpdate()
             })
@@ -63,6 +64,6 @@
               console.log(error)
             })
           },
-      }
+      },
     };
 </script>

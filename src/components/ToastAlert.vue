@@ -1,15 +1,18 @@
 <template>
-    <v-snackbar
+  <v-snackbar
     v-model="showSnackbar"
-    elevation="25"
+    :timeout="timeout"
+    :color="this.color"
+    class="d-flex justify-space-between align-center black--text"
+    style="z-index: 9999; margin-top: 75px;"
+    elevation="24"
+    rounded="pill"
+    absolute
     top
-    style="z-index: 9999; margin-top: 60px;"
-    :color="color"
-    :timeout="timer"
-    class="d-flex justify-align-center"
-    max-width="200"
+    centered
     >
-      <v-icon left>{{icon}}</v-icon>{{message}}
+    <v-icon left>mdi-alert-outline</v-icon>
+      {{ message }}
     </v-snackbar>
 </template>
   
@@ -20,16 +23,14 @@
       return{
         showSnackbar: false,
         message: '',
-        color: 'red',
-        icon: 'mdi-check',
-        timer: 3000
+        color: 'error',
+        timeout: 3000
       }
     },
     methods:{
       show(data) {
         this.message = data.message || 'missing "message".'
         this.color = data.color || 'error'
-        this.icon = data.icon || 'mdi-check'
         this.showSnackbar = true
       }
     }

@@ -1,6 +1,6 @@
 <template>
     <div v-if="spots" class="mt-16 px-4">
-        <v-container v-for="spot in spotsHanded" v-bind:key="spot._id" info.sync="spot">
+        <v-container v-for="spot in spotsHanded" :key="spot.id_spot" info.sync="spot">
             <CardSpot :info="spot"/>
         </v-container>
         <v-btn icon
@@ -19,7 +19,7 @@
     import CardSpot from './CardSpot.vue'
     import { isUserLogged } from '@/api/checkUser'
     import {getAllSpots} from '../api/spots/getAllSpots'
-    // import {getAllLikedSpots} from '../api/spots/getAllLikedSpots'
+    import {getAllLikedSpots} from '../api/spots/getAllLikedSpots'
 
     export default {
         components: {
@@ -48,8 +48,9 @@
                     })
                     if(isUserLogged()) {
                         this.getAllLikedSpots()
+                    } else {
+                        this.spotsHanded = this.spots
                     }
-                    this.spotsHanded = this.spots
                 })
                 .catch(error => {
                     console.log(error)
@@ -65,6 +66,7 @@
                         }
                         return spot
                     })
+                    this.spotsHanded = this.spots
                 })
                 .catch(error => {
                     console.log(error)

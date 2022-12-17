@@ -20,7 +20,7 @@
                 </v-btn>
         </div>
     <div v-if="users">
-        <v-container v-for="user in usersDisplayed" :key="user.username" info.sync="user">
+        <v-container v-model="usersDisplayed" v-for="user in usersDisplayed" :key="user.username" info.sync="user">
             <CardUser :info="user"/>
         </v-container>
     </div> 
@@ -86,10 +86,9 @@
                 })
             },
             toggleFriends() {
-                // this.$forceUpdate()
                 if(!this.displayFriends) {
                     this.usersDisplayed = this.users.filter((user) => {
-                        return (this.friends.includes(user.username))
+                        return (user.friend === true)
                     })
                 } else {
                     this.usersDisplayed = this.users

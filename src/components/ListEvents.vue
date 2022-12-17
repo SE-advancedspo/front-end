@@ -40,14 +40,15 @@
                     this.events = data
                     this.events = this.events.map((event) => {
                         // create random number between 0 and 5
-                        event.numAmici = Math.floor(Math.random() * 6)
+                        event.numAmici = Math.floor(Math.random() * 5)+1
                         event.salvato = false
                         return event
                     })
                     if(isUserLogged()) {
                         this.getAllFollowedEvents()
+                    } else {
+                        this.eventsHanded = this.events
                     }
-                    this.eventsHanded = this.events
                 })
                 .catch(error => {
                     console.log(error)
@@ -63,6 +64,7 @@
                         }
                         return event
                     })
+                    this.eventsHanded = this.events
                 })
                 .catch(error => {
                     console.log(error)

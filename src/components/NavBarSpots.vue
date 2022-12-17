@@ -26,11 +26,13 @@
 </template>
 
 <script>
+  import { isUserLogged } from '@/api/checkUser';
+
   export default {
     name: "NavBarSpots",
     methods: {
       goToFriends() {
-        if(this.username == '')
+        if(!isUserLogged())
         {
           this.$root.toast.show({message: "Please, authenticate yourself before moving on."})
           this.$router.push("/login");

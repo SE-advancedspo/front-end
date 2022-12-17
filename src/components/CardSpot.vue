@@ -8,7 +8,7 @@
     >
       <v-list-item class="d-flex justify-space-between">
         <div class="ml-n12 mr-5">
-          <v-btn v-if="s.upVoted" icon class="amber lighten-2" @click="downVote()">
+          <v-btn v-if="this.s.upVoted" icon class="amber lighten-2" @click="downVote()">
             <v-icon x-large color="deep-orange darken-3">mdi-fire-circle</v-icon>
           </v-btn>
           <v-btn v-else icon outlined @click="upVote()">
@@ -94,8 +94,5 @@
           })
         },
       },
-      mounted() {
-
-      }
   };
 </script>
