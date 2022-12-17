@@ -16,9 +16,11 @@
               </v-btn>
               {{info.nome}}
             </v-list-item>
-            <v-btn icon x-large @click="toggleSalvato()">
-              <v-icon v-if="info.salvato">mdi-bookmark-outline</v-icon>
-              <v-icon v-else color="yellow">mdi-bookmark</v-icon>
+            <v-btn v-if="e.salvato" icon x-large @click="unfollowBookmarkEvento()">
+              <v-icon>mdi-bookmark-outline</v-icon>
+            </v-btn>
+            <v-btn v-else icon x-large @click="followBookmarkEvento()">
+              <v-icon color="yellow">mdi-bookmark</v-icon>
             </v-btn>
           </div>
           <v-list-item-subtitle>
@@ -35,6 +37,9 @@
   </template>
 
   <script>
+    import {followEvent} from '../api/events/followEvent';
+    // import {unfollowEvent} from '../api/events/unfollowEvent';
+
     export default {
       name: 'CardEvent',
       props: ['info'],
@@ -45,8 +50,29 @@
          }
       },
       methods: {
-        toggleSalvato() {
-          this.e.salvato = !this.e.salvato
+        followBookmarkEvento() {
+          followEvent(this.e.id_evento)
+          .then(() => {
+            this.e.salvato = true
+            // reload component
+            this.$forceUpdate()
+          })
+          .catch(error => {
+            console.log(error)
+          })
+        },
+        unfollowBookmarkEvento() {
+          this.e.salvato = false
+          this.$forceUpdate()
+          // unfollowEvent(this.e.id_evento)
+          // .then(() => {
+          //   this.e.salvato = false
+          //   // reload component
+          //   this.$forceUpdate()
+          // })
+          // .catch(error => {
+          //   console.log(error)
+          // })
         },
         openGMaps() {
           window.open('https://www.google.com/maps/search/?api=1&query=' + this.e.luogo, '_blank')

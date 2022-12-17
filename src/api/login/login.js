@@ -1,6 +1,6 @@
 import init from "../init";
 
-const login = (user) => {
-    return init.post("/login", user);
+export const login = (user) => {
+    return init.post("/user/auth", user);
 };
 

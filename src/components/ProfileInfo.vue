@@ -41,7 +41,7 @@
                         style="font-size: 1rem"
                         elevation="5"
                         rounded
-                        to="/"
+                        @click="$router.go(-1)"
                         >
                         Go Back
                     </v-btn>
@@ -62,14 +62,14 @@
         },        
         methods: {
             fetchUser() {
-                getUserInfo()
+                getUserInfo(this.username)
                 .then(({data}) => {  // descrutoring data
                     let unwrap = ({email, contatto, bio, facolta, anno_acc, regione, desc}) => ({email, contatto, bio, facolta, anno_acc, regione, desc});
                     this.user = unwrap(data)
-                    console.log(this.user)
+                    this.$forceUpdate
                 })
                 .catch(error => {
-                console.log(error)
+                    console.log(error)
                 })
             },
             unimplemented() {

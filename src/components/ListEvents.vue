@@ -26,26 +26,13 @@
 
         data() {
             return {
-                count: 0,
                 events: [],
             }
         },
-
         methods: {
-            getEventsAux() {
-                this.events = [
-                    {id: this.count++, nome: 'Sangria Sociologia', data: 'Thursday 20:00, 22/12/2022', luogo: 'Via Rosmini, Trento', salvato: false, numAmici: 4},
-                    {id: this.count++, nome: 'Aperipovo Polo Ferrari', data: 'Thursday 21:00, 29/12/2022', luogo: 'Via Roma 12, Putignano', salvato: true, numAmici: 3},
-                    {id: this.count++, nome: 'Ginsprudenza', data: 'Thursday 20:00, 22/12/2022', luogo: 'Via Paolo X, Cagliari', salvato: true, numAmici: 2},
-                    {id: this.count++, nome: 'Sangria Sociologia', data: 'Thursday 20:00, 22/12/2022', luogo: 'Via Rosmini, Trento', salvato: false, numAmici: 4},
-                    {id: this.count++, nome: 'Aperipovo Polo Ferrari', data: 'Thursday 21:00, 29/12/2022', luogo: 'Via Roma 12, Putignano', salvato: true, numAmici: 3},
-                    {id: this.count++, nome: 'Ginsprudenza', data: 'Thursday 20:00, 22/12/2022', luogo: 'Via Paolo X, Cagliari', salvato: true, numAmici: 2},
-                ]
-            },
             fetchEvents() {
                 getAllEvents()
                 .then(({data}) => {  // descrutoring data
-                    console.log(data)
                     this.events = data
                 })
                 .catch(error => {
@@ -53,10 +40,8 @@
                 })
             },
         },
-
         mounted() {
             this.fetchEvents()
-            //this.getEventsAux()
         },
     }
 </script>

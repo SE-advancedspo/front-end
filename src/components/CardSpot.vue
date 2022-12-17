@@ -8,10 +8,10 @@
     >
       <v-list-item class="d-flex justify-space-between">
         <div class="ml-n12 mr-5">
-          <v-btn v-if="info.upVoted" icon class="amber lighten-2" @click="toggleUpVoted()">
+          <v-btn v-if="info.upVoted" icon class="amber lighten-2" @click="downVote()">
             <v-icon x-large color="deep-orange darken-3">mdi-fire-circle</v-icon>
           </v-btn>
-          <v-btn v-else icon outlined @click="toggleUpVoted()">
+          <v-btn v-else icon outlined @click="upVote()">
             <v-icon color="black">mdi-fire</v-icon>
           </v-btn>
         </div>
@@ -35,6 +35,8 @@
 
   <script>
     import {translate} from '../api/translate/translate'
+    import {upVote} from '../api/spots/upVoteSpot'
+    // import {downVote} from '../api/spots/downVote'
     
     export default {
       name: 'CardSpot',
@@ -46,27 +48,38 @@
       },
       methods: {
         translateText() {
-          let langTarget = "it"
-          if(this.info.lingua=="Italiano")
-            langTarget = "en"
           const spotData = {
-            q: this.info.testo,
-            target: langTarget,
+            q: this.s.testo,
           }
           translate(spotData)
           .then((response) => {
-            console.log(response.data)
+            this.s.testo = response.data.translations[0].text
           })
           .catch((error) => {
             console.log(error)
           })
         },
         sendMessageToAuthor() {
-          console.log('message sent to: ' + this.info.autore)
+          this.$root.toast.show({message: 'The author of this spot is: ' + this.info.autore + ". Although, it's not possible to contact him/her yet."})
         },
-        toggleUpVoted() {
-          this.s.upVoted = !this.s.upVoted
+        upVote() {
+          console.log("id: " + this.s.id_spot)
+          upVote(this.s.id_spot)
+          .then(() => {
+            this.s.upVoted = true
+            this.$forceUpdate()
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+        },
+        downVote() {
+          this.s.upVoted = false
+          this.$forceUpdate()
         },
       },
-    };
+      mounted() {
+
+      }
+  };
 </script>

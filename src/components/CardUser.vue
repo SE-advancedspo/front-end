@@ -43,8 +43,10 @@
       methods: {
           addBookmarkFriend() {
             addFriend(this.s.username)
-            .then(res => {
-              console.log(res)
+            .then(() => {
+              this.s.friend = true
+              // reload component
+              this.$forceUpdate()
             })
             .catch(error => {
               console.log(error)
@@ -52,8 +54,10 @@
           },
           removeBookmarkFriend() {
             removeFriend(this.s.username)
-            .then(res => {
-              console.log(res)
+            .then(() => {
+              this.s.friend = false
+              // reload component
+              this.$forceUpdate()
             })
             .catch(error => {
               console.log(error)

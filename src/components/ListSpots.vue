@@ -23,38 +23,28 @@
         components: {
             CardSpot,
         },
-
         data() {
             return {
-                count: 0,
                 spots: [],
             }
         },
-
         methods: {
-            getSpotsAux() {
-                this.spots = [
-                    {id: this.count++, testo: 'Do mollit non minim est Lorem sint do pariatur pariatur enim. Nulla ex minim enim eu incididunt. Commodo cupidatat voluptate est qui et magna aute eiusmod.', autore:'vincenzo.netti@studenti.unint.it', upVoted: false},
-                    {id: this.count++, testo: 'Nulla ex minim enim eu incididunt. Commodo cupidatat voluptate est qui et magna aute eiusmod. Ullamco officia sint exercitation occaecat ad magna nisi velit do consectetur esse adipisicing magna amet voluptate. Eiusmod dolor irure labore commodo magna.', autore:'vincenzo.netti@studenti.unint.it', upVoted: true},
-                    {id: this.count++, testo: 'Nulla ex minim enim eu incididunt. Commodo cupidatat voluptate est qui et magna aute eiusmod. Do mollit non minim est Lorem sint do pariatur pariatur enim.', autore:'vincenzo.netti@studenti.unint.it', upVoted: true},
-                    {id: this.count++, testo: 'Do mollit non minim est Lorem sint do pariatur pariatur enim. Nulla ex minim enim eu incididunt. Commodo cupidatat voluptate est qui et magna aute eiusmod.', autore:'vincenzo.netti@studenti.unint.it', upVoted: false},
-                    {id: this.count++, testo: 'Nulla ex minim enim eu incididunt. Commodo cupidatat voluptate est qui et magna aute eiusmod. Ullamco officia sint exercitation occaecat ad magna nisi velit do consectetur esse adipisicing magna amet voluptate. Eiusmod dolor irure labore commodo magna.', autore:'vincenzo.netti@studenti.unint.it', upVoted: true},
-                    {id: this.count++, testo: 'Nulla ex minim enim eu incididunt. Commodo cupidatat voluptate est qui et magna aute eiusmod. Do mollit non minim est Lorem sint do pariatur pariatur enim.', autore:'vincenzo.netti@studenti.unint.it', upVoted: true},
-                ]
-            },
             fetchSpots() {
                 getAllSpots()
                 .then(({data}) => {  // descrutoring data
-                    this.spots = data.reverse()
+                    // cronological order
+                    // this.spots = data.reverse()
+                    // popularity order
+                    this.spots = data.sort((a, b) => {
+                        return (b.num_like - a.num_like)
+                    })
                 })
                 .catch(error => {
                     console.log(error)
                 })
             },
         },
-
         mounted() {
-            //this.getSpotsAux()
             this.fetchSpots()
         },
     }

@@ -31,7 +31,7 @@
                         </a>
                         <v-container fluid class="d-flex justify-center" style="width:50%;">
                             <v-btn
-                                @click="getUsername()"
+                                @click="login()"
                                 class="black yellow--text ma-4 font-weight-bold"
                                 style="font-size: 1rem"
                                 elevation="5"
@@ -60,6 +60,7 @@
 
 <script>
     import {login} from '../api/login/login'
+    
     export default {
         data() {
             return {
@@ -78,20 +79,23 @@
                         username: this.username,
                         password: this.password,
                     }
+
                     login(user)
-                    .then(response => {
-                        console.log(response)
+                    .then((response) => {
                         // need to save the token in local storage
-                        if (response.status == 200) {
+                        localStorage.setItem('token', response.data.token)
+                        if(response.data.success == false) {
+                            this.$root.toast.show({message: "Incorrect username or password"})
+                            return
+                        } else if (response.data.success == true) {
+                            localStorage.setItem('username', this.username)
                             this.$root.toast.show({message: "Successfully logged in as " + this.username})
                             this.$router.push('/')
-                        } else {
-                            this.$root.toast.show({message: "Incorrect username or password"})
                         }
                     })
                     .catch(error => {
-                        console.log(error)
-                        this.$root.toast.show({message: "Incorrect username or password"})
+                        console.log("error: " + error)
+                        this.$root.toast.show({message: "API call error"})
                     })
                 }
             },

@@ -1,7 +1,6 @@
 import init from "../init";
 
-const url = "/user/" + localStorage.getItem('username')
-
-export const getUserInfo = () => {
+export const getUserInfo = (username) => {
+    const url = "/user/" + username
     return init.get(url);
 }

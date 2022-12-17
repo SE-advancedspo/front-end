@@ -41,7 +41,6 @@
             return {
                 search: '',
                 displayFriends: false,
-                count: 0,
                 users: [],
                 friends: [],
                 usersDisplayed: [],
@@ -50,16 +49,6 @@
         },
 
         methods: {
-            getUsersAux() {
-                this.users = [
-                    {_id: this.count++, username: 'user1', friend: true},
-                    {_id: this.count++, username: 'user2', friend: false},
-                    {_id: this.count++, username: 'user4', friend: false},
-                    {_id: this.count++, username: 'user5', friend: true},
-                    {_id: this.count++, username: 'user7.', friend: true},
-                    {_id: this.count++, username: 'user6', friend: true},
-                ]
-            },
             fetchUsers() {
                 getAllUsers()
                 .then(({data}) => {  // descrutoring data
@@ -97,6 +86,7 @@
                 })
             },
             toggleFriends() {
+                // this.$forceUpdate()
                 if(!this.displayFriends) {
                     this.usersDisplayed = this.users.filter((user) => {
                         return (this.friends.includes(user.username))
@@ -109,7 +99,6 @@
         },
 
         mounted() {
-            //this.getUsersAux()
             this.fetchUsers()
             this.fetchFriends()
         },

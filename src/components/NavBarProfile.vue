@@ -30,8 +30,8 @@
     name: "NavBarLogin",
     methods: {
       logout() {
-        // change token in localStorage
         localStorage.setItem('username', "")
+        localStorage.setItem('token', undefined)
         this.$root.toast.show({color: "red", message: "Successfully logged out"})
         this.$router.push('/')
       }
