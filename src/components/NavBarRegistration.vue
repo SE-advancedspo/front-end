@@ -4,7 +4,7 @@
       fixed
       color="black"
       elevate-on-scroll
-      scroll-target="#scrolling-techniques-7"
+      
       class="white--text rounded-t-0"
       style="z-index: 999;"
     >

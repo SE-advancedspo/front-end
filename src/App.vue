@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <v-content>
-        <ToastAlert ref="toast"/>
+    <v-main>
+      <ToastAlert ref="toast"/>
       <router-view/>
-    </v-content>
+    </v-main>
   </div>
 </template>
 
