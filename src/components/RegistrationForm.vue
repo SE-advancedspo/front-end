@@ -40,14 +40,16 @@
                             label="Password *"
                             hide-details="auto"
                             v-model="password"
+                            type="password"
                             placeholder="P@ssword0"
                             class="mb-6"
                             style="width: 50%"
                             ></v-text-field>
-                        <v-text-field
+                            <v-text-field
                             label="Password Confirmation *"
                             hide-details="auto"
                             v-model="password_confirmation"
+                            type="password"
                             placeholder="P@ssword0"
                             class="mb-6"
                             style="width: 50%"
