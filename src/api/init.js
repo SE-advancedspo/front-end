@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-// const baseURL = "http://localhost:3000";
+//const baseURL = "http://localhost:3000";
 
-const baseURL = "http://167.99.136.159:3000";
+const baseURL = "https://back-end-production-946d.up.railway.app";
 
 const init = axios.create({
   baseURL,
