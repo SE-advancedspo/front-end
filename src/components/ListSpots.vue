@@ -39,7 +39,6 @@
                     // cronological order
                     // this.spots = data.reverse()
                     // popularity order
-                    console.log(data)
                     this.spots = data.sort((a, b) => {
                         return (b.num_like - a.num_like)
                     })

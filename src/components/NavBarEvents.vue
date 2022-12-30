@@ -26,7 +26,6 @@
 </template>
 
 <script>
-  // import { authenticateUser } from '@/api/authenticateUser';
   import { isUserLogged } from '@/api/checkUser'
 
   export default {
