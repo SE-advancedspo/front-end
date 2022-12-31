@@ -1,6 +1,6 @@
 <template>
     <div class="d-flex justify-center align-center px-16">
-        <v-container class="mt-16" style="max-width: 500px">
+        <v-container class="mt-16 d-flex justify-content" style="max-width: 500px">
             <p class="text-h6 mb-4">Type</p>
             <v-menu>
                 <template v-slot:activator="{ on, attrs }">
@@ -30,14 +30,14 @@
                 maxlength="120"
                 full-width
                 single-line
-                ></v-textarea>
+            ></v-textarea>
             <div class="d-flex justify-content-center"
                     style="position: fixed; bottom: 2.5%; width: 100%;"
                 >
                 <v-btn class="black yellow--text mx-4" @click="sendSpot()" rounded>
                     Send
                 </v-btn>
-                <v-btn to="/spots" class="black yellow--text mx-4" rounded>
+                <v-btn @click="$router.go(-1)" class="black yellow--text mx-4" rounded>
                     Cancel
                 </v-btn>
             </div>

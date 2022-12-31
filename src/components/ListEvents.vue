@@ -9,7 +9,7 @@
             fixed
             x-large
             class="black"
-            to="/createspot">
+            @click="goToSpotCreation()">
             <v-icon color="yellow">mdi-plus</v-icon>
         </v-btn>
     </div> 
@@ -34,6 +34,16 @@
             }
         },
         methods: {
+            goToSpotCreation() {
+                if(!isUserLogged())
+                {
+                this.$root.toast.show({message: "Please, authenticate yourself before moving on."})
+                this.$router.push("/login");
+                } else
+                {
+                this.$router.push("/createspot");
+                }
+            },
             fetchEvents() {
                 getAllEvents()
                 .then(({data}) => {  // descrutoring data
